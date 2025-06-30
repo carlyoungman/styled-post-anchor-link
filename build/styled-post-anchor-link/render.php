@@ -1,8 +1,19 @@
 <?php
-/**
- * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
- */
-?>
-<p <?php echo get_block_wrapper_attributes(); ?>>
-	<?php esc_html_e( 'styled Post Anchor Link – hello from a dynamic block!', 'styled-post-anchor-link' ); ?>
-</p>
+
+
+if ( ! function_exists( 'render_styled_post_anchor_link_block' ) ) {
+	function render_styled_post_anchor_link_block( $attributes ) {
+		if ( empty( $attributes['postId'] ) || empty( $attributes['postUrl'] ) || empty( $attributes['postTitle'] ) ) {
+			return '';
+		}
+
+		$url   = esc_url( $attributes['postUrl'] );
+		$title = esc_html( $attributes['postTitle'] );
+
+		return "<p class='dmg-read-more'>Read More: <a href='{$url}'>{$title}</a></p>";
+	}
+}
+
+register_block_type( __DIR__, [
+	'render_callback' => 'render_styled_post_anchor_link_block',
+] );

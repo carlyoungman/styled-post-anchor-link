@@ -5,8 +5,12 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-styled-post-anchor-link-styled-post-anchor-link {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+.dmg-read-more {
+	display: inline;
+	font-weight: bold;
+}
+
+.dmg-read-more a {
+	color: #0073aa;
+	text-decoration: underline;
 }

@@ -6,10 +6,10 @@ return array(
 		'apiVersion' => 3,
 		'name' => 'styled-post-anchor-link/styled-post-anchor-link',
 		'version' => '0.1.0',
-		'title' => 'styled Post Anchor Link',
+		'title' => 'Styled Post Anchor Link',
 		'category' => 'text',
-		'icon' => 'smiley',
-		'description' => 'A custom-made Gutenberg block for dmg::media. The plugin allows users to create styled post anchor links',
+		'icon' => 'SVGIcon',
+		'description' => 'Add a styled anchor link to a post.',
 		'example' => array(
 			
 		),
@@ -21,6 +21,17 @@ return array(
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',
 		'render' => 'file:./render.php',
-		'viewScript' => 'file:./view.js'
+		'viewScript' => 'file:./view.js',
+		'attributes' => array(
+			'postId' => array(
+				'type' => 'number'
+			),
+			'postTitle' => array(
+				'type' => 'string'
+			),
+			'postUrl' => array(
+				'type' => 'string'
+			)
+		)
 	)
 );
