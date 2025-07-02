@@ -14,13 +14,31 @@ return array(
 			
 		),
 		'supports' => array(
-			'html' => false
+			'color' => array(
+				'text' => true,
+				'background' => true
+			),
+			'typography' => array(
+				'fontSize' => true,
+				'fontWeight' => true,
+				'textAlign' => true
+			)
+		),
+		'styles' => array(
+			array(
+				'name' => 'default',
+				'label' => 'Default',
+				'isDefault' => true
+			),
+			array(
+				'name' => 'card',
+				'label' => 'Card'
+			)
 		),
 		'textdomain' => 'styled-post-anchor-link',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',
-		'render' => 'file:./render.php',
 		'viewScript' => 'file:./view.js',
 		'attributes' => array(
 			'postId' => array(
@@ -31,6 +49,14 @@ return array(
 			),
 			'postUrl' => array(
 				'type' => 'string'
+			),
+			'textColor' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'backgroundColor' => array(
+				'type' => 'string',
+				'default' => ''
 			)
 		)
 	)

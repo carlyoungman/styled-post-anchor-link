@@ -9,13 +9,31 @@
   "description": "Add a styled anchor link to a post.",
   "example": {},
   "supports": {
-    "html": false
+    "color": {
+      "text": true,
+      "background": true
+    },
+    "typography": {
+      "fontSize": true,
+      "fontWeight": true,
+      "textAlign": true
+    }
   },
+  "styles": [
+    {
+      "name": "default",
+      "label": "Default",
+      "isDefault": true
+    },
+    {
+      "name": "card",
+      "label": "Card"
+    }
+  ],
   "textdomain": "styled-post-anchor-link",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
-  "render": "file:./render.php",
   "viewScript": "file:./view.js",
   "attributes": {
     "postId": {
@@ -26,6 +44,14 @@
     },
     "postUrl": {
       "type": "string"
+    },
+    "textColor": {
+      "type": "string",
+      "default": ""
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": ""
     }
   }
 }

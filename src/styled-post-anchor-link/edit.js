@@ -1,5 +1,6 @@
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls, useSettings } from '@wordpress/block-editor';
 import { useState, useEffect } from '@wordpress/element';
+import { GridLoader } from "react-spinners";
 import apiFetch from '@wordpress/api-fetch';
 import {
 	__experimentalInputControl as InputControl,
@@ -7,6 +8,7 @@ import {
 	Button,
 } from '@wordpress/components';
 import './editor.scss';
+import { ChevronLeft, ChevronRight  } from 'lucide-react';
 
 export default function Edit({ attributes, setAttributes }) {
 	const [isLoading, setIsLoading] = useState(false);
@@ -14,6 +16,12 @@ export default function Edit({ attributes, setAttributes }) {
 	const [page, setPage] = useState(1);
 	const [results, setResults] = useState([]);
 	const [searchTerm, setSearchTerm] = useState('');
+	const color = "#8C6AB9";
+	const { colors } = useSettings();
+	const override = {
+		display: "block",
+		margin: "0 auto",
+	};
 
 	const fetchPosts = async () => {
 		setIsLoading(true);
@@ -32,7 +40,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 			if (Array.isArray(res)) {
 				setResults(res);
-				setTotalPages(5); // hardcoded — ideally use res headers
+				setTotalPages(5);
 			} else {
 				setResults([res]);
 				setTotalPages(1);
@@ -62,8 +70,8 @@ export default function Edit({ attributes, setAttributes }) {
 		<div {...useBlockProps()}>
 			<InspectorControls>
 				<PanelBody title="Search for a Post">
+					<p>Search for posts using their title or ID</p>
 					<InputControl
-						label="Search"
 						value={searchTerm}
 						onChange={(value) => {
 							setPage(1);
@@ -71,39 +79,53 @@ export default function Edit({ attributes, setAttributes }) {
 						}}
 						placeholder="Enter title or ID"
 					/>
-					{isLoading && <p>Loading...</p>}
-					{results.map((post) => (
-						<Button
-							key={post.id}
-							isSecondary
-							onClick={() => choosePost(post)}
-							style={{ marginBottom: '4px' }}
-						>
-							{post.title.rendered}
-						</Button>
-					))}
+					<hr></hr>
+					<GridLoader
+						color={color}
+						loading={isLoading}
+						cssOverride={override}
+						size={15}
+						aria-label="Loading Spinner"
+						data-testid="loader"
+					/>
+					{!isLoading && (
+						<>
+							<p>Results:</p>
+							{results.map((post) => (
+								<Button
+									key={post.id}
+									variant="secondary"
+									onClick={() => choosePost(post)}
+									style={{ marginBottom: '5px' }}
+								>
+									{post.title.rendered}
+								</Button>
+							))}
+						</>
+					)}
 					{totalPages > 1 && (
-						<div style={{ marginTop: '8px' }}>
+						<div style={{ marginTop: '30px', display: 'flex', gap: '15px', alignItems: 'center', justifyContent: 'space-between' }}>
 							<Button
-								isSmall
 								disabled={page <= 1}
+								variant="tertiary"
 								onClick={() => setPage((p) => p - 1)}
+								style={{ display: 'flex', gap: '15px', alignItems: 'center', justifyContent: 'space-between' }}
 							>
-								← Prev
+								<ChevronLeft size={24} /> Prev
 							</Button>
 							<Button
-								isSmall
 								disabled={page >= totalPages}
+								variant="tertiary"
 								onClick={() => setPage((p) => p + 1)}
-								style={{ marginLeft: '4px' }}
+								style={{ display: 'flex', gap: '5px', alignItems: 'center', justifyContent: 'space-between' }}
 							>
-								Next →
+								Next
+								<ChevronRight size={24} />
 							</Button>
 						</div>
 					)}
 				</PanelBody>
 			</InspectorControls>
-
 			{postUrl && postTitle ? (
 				<p className="dmg-read-more">
 					Read More:{' '}

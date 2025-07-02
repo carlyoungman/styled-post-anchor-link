@@ -4,6 +4,30 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-styled-post-anchor-link-styled-post-anchor-link {
-	border: 1px dotted #f00;
+
+
+//Some very basic styles for the block
+.wp-block-styled-post-anchor-link-styled-post-anchor-link{
+	&.is-style-card{
+		display: block;
+		padding: 3rem 1.5rem;
+		border-radius: 2rem;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+		transition: background-color 0.3s ease, box-shadow 0.3s ease;
+		position: relative;
+		margin: 1.5rem auto;
+	}
+	&.has-background{
+		padding: 1.5rem;
+	}
+
+	.dmg-read-more{
+		margin: 0;
+		padding: 0;
+		text-decoration: underline;
+		&:hover {
+			text-decoration: none;
+		}
+	}
 }
+

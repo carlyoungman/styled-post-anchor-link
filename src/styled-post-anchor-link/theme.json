@@ -1,0 +1,31 @@
+{
+	"version": 2,
+	"settings": {
+		"color": {
+			"palette": [
+				{
+					"name": "Purple Primary",
+					"slug": "purple-primary",
+					"color": "#6f2c91"
+				},
+				{
+					"name": "Charcoal",
+					"slug": "charcoal",
+					"color": "#212121"
+				},
+				{
+					"name": "White",
+					"slug": "white",
+					"color": "#ffffff"
+				},
+				{
+					"name": "Black",
+					"slug": "black",
+					"color": "#000000"
+				}
+			],
+			"custom": true,
+			"defaultPalette": false
+		}
+	}
+}
