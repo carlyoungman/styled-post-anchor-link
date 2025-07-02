@@ -57,4 +57,12 @@ function styled_post_anchor_link_styled_post_anchor_link_block_init() {
 		register_block_type( __DIR__ . "/build/{$block_type}" );
 	}
 }
+
+
 add_action( 'init', 'styled_post_anchor_link_styled_post_anchor_link_block_init' );
+
+
+// Load the custom WP-CLI command for searching posts with the styled-post-anchor-link block.
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+	require_once __DIR__ . '/includes/dmg-read-more-search.php';
+}
