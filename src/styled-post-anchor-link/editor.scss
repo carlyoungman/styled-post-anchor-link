@@ -5,10 +5,10 @@
  */
 
 
-
 //Some very basic styles for the block
-.wp-block-styled-post-anchor-link-styled-post-anchor-link{
-	&.is-style-card{
+.wp-block-styled-post-anchor-link-styled-post-anchor-link {
+
+	&.is-style-card {
 		display: block;
 		padding: 3rem 1.5rem;
 		border-radius: 2rem;
@@ -17,14 +17,16 @@
 		position: relative;
 		margin: 1.5rem auto;
 	}
-	&.has-background{
+
+	&.has-background {
 		padding: 1.5rem;
 	}
 
-	.dmg-read-more{
+	.dmg-read-more {
 		margin: 0;
 		padding: 0;
 		text-decoration: underline;
+
 		&:hover {
 			text-decoration: none;
 		}
